@@ -75,3 +75,20 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+
+
+@font-face{
+  font-family: 'Roboto-Bold';
+   src: url('../assets/fonts/roboto/Roboto-Bold.ttf');
+  
+}
+@font-face{
+  font-family: 'Roboto-Regular';
+  font-style: regular;
+  src: url('../assets/fonts/roboto/Roboto-Regular.ttf');
+}
+@font-face{
+  font-family: 'Roboto-Light';
+  src: url('../assets/fonts/roboto/Roboto-Light.ttf');
+}

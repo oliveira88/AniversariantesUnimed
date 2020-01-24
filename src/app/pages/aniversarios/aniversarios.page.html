@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar class="navbar">
+    <ion-title class="titulo">Aniversariantes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button icon="../assets/images/angle-left.svg" defaultHref="/aniversariantes" ionClick="sair()"
+        class="icone-voltar">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button class="icone-menu">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-segment class="segment">
+    <ion-segment-button checked value="aniversarios" class="segment-title">
+      <ion-label class="segment-label">Aniversários</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="unimed" class="segment-title">
+      <ion-label class="segment-label">Unimed</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+<ion-menu side="end" contentId="contentx">
+
+</ion-menu>
+
+<ion-content id="contentx" class="content">
+  <ion-text>
+    <h1 class="text">Veja os cooperados que comemoram aniversário. Selecione uma data ou pesquise pelo nome.</h1>
+  </ion-text>
+
+  <ion-card class="card-data">
+    <ion-card-content class="card-content">
+      <div class="div-content">
+        <i slot="end" class="fas fa-calendar-alt fa-2x img-calendar"></i>
+        <ion-datetime class="text-data" displayFormat="MMMM - YYYY" value="October - 2017"></ion-datetime>
+        <i slot="end" class="fas fa-caret-right fa-2x img-right-caret"></i>
+
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-input">
+    <div class="div-nome-aniversariante">
+
+
+      <ion-input placeholder="Nome do aniversariante" autocomplete="true" class="input-aniversariante"></ion-input>
+    </div>
+  </ion-card>
+
+  <ion-card class="card-aniversariantes">
+    <ion-item>
+
+      <ion-card-title class="card-title">Aniversariantes do dia</ion-card-title>
+      <div slot="end" class="div-title-date">
+        <div class="card-title-date-text">
+          30
+        </div>
+        <div class="card-input-date-data">
+          out
+        </div>
+      </div>
+
+    </ion-item>
+    <ion-card-content class="card-content-aniversariantes">
+
+      <ion-list *ngFor="let i of aniversariantes">
+        {{i}}
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

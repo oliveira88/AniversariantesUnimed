@@ -1,0 +1,151 @@
+$margin: 3%;
+
+.navbar{
+    height: 60px;
+    --background: #00995D;
+    vertical-align: bottom;
+    .icone-voltar{
+        color: #FFFFFF;
+    }
+    >.titulo{
+        font-family: 'Roboto-Bold';
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+      
+    }
+    .icone-menu{
+        color: #FFFFFF;
+    }
+}
+
+ion-menu{
+    --max-width: 65%;
+}
+.segment{
+    background-color: #006B3E;
+    min-height: 48px;
+
+    >.segment-title{
+        font-family: 'Roboto-Regular';
+        font-size: 11px;
+        --color: #00BB6C;
+        --color-checked: #FFFFFF;
+        --indicator-color-checked: #BED700;
+    }
+    
+   
+}
+.segment-button-checked{
+    font-family: 'Courier New', Courier, monospace;
+}
+.content{
+    --background: #F2F2F2;
+    .text{
+        font-family: 'Roboto-Light';
+        text-align: justify;
+        font-size: 12.5px;
+        color: #5B5C65;
+        --background: #FFFFFF;
+        margin: 3% 13px;
+    }
+    
+    .card-data{
+        border-radius: 10px;
+        //box-shadow: 2dp 6dp;
+        --background: #FFFFFF;
+        margin: $margin;
+        .div-content{
+            display: flex;
+            align-items: center;
+       
+
+            .img-calendar{
+                color: #00995D;
+            }
+            .img-right-caret{
+                color: #00995D;
+                position: absolute;
+                 display: block;
+                padding-left: 85%;
+            }
+            @media screen and (min-width: 700px){
+                .img-right-caret{
+                    padding-left:95%;
+                }
+            }
+            .text-data{
+                font-family: 'Roboto-Regular';
+                display: block;
+                text-align: left;
+                text-transform: uppercase;
+                color: #00995D;
+            }
+        }
+     
+           
+    }
+    .card-input{
+        --background: #FFFFFF;
+        border-radius: 5px;
+        border-color: #CFD3D6;
+        border: 1px;
+        margin: $margin;
+        min-height: 50px;
+        .div-nome-aniversariante{
+            .input-aniversariante{
+                font-family: 'Roboto-Regular';
+                font-size: 12px;
+                --color: #5B5C85;
+                margin-top: 8px;
+            }
+        }
+        
+    }
+    .card-aniversariantes{
+        --background: #FFFFFF;
+        border-radius: 10px;
+        //box-shadow: 2dp 6dp;
+        color: #FFFFFF;
+        margin: $margin;
+        .div-title-date{
+            text-align: center;
+            font-family: 'Roboto-Light';
+            line-height: 14pt;
+        
+            .card-title-date-text{
+                color:#5B5C65 ;
+                font-size: 25px;
+            }
+            .card-input-date-data{
+                font-size: large;
+                color: #00995D;
+            }
+         }
+        .card-title{
+            font-family: 'Roboto-Bold';
+            font-size: 14px;
+            color: #5B5C65;
+            text-transform: uppercase;
+            float: left;
+
+        }
+        .datetime-title{
+            font-family: 'Roboto-Bold';
+            font-size: 14px;
+            text-transform: lowercase;
+            color: #00995D;
+
+            
+        }
+        .card-content-aniversariantes{
+            font-family: 'Roboto-Light';
+            font-size: 15px;
+            line-height: 14pt;
+            color: #1E1E1E;
+        }
+
+    }
+    
+}
+    
