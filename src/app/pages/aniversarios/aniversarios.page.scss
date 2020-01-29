@@ -32,7 +32,12 @@ ion-menu{
         --color: #00BB6C;
         --color-checked: #FFFFFF;
         --indicator-color-checked: #BED700;
+      .segment-label{
+        transform: translateY(35%);
+        
+      }
     }
+    
     
    
 }
@@ -111,7 +116,7 @@ ion-menu{
         .div-title-date{
             text-align: center;
             font-family: 'Roboto-Light';
-            line-height: 14pt;
+            line-height: 16pt;
         
             .card-title-date-text{
                 color:#5B5C65 ;
@@ -119,6 +124,7 @@ ion-menu{
             }
             .card-input-date-data{
                 font-size: large;
+                text-transform: lowercase;
                 color: #00995D;
             }
          }
