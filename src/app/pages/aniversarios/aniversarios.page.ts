@@ -8,53 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aniversarios.page.scss'],
 })
 export class AniversariosPage implements OnInit {
-  aniversariantes: Array<Aniversariante> = [];
-  aniversariantesData = [];
+  public aniversariantes: Aniversariante[] = [];
+  public copiaAniversariantes: Aniversariante[] = [];
+  public aniversariantesData = [];
+  public mes = new Date(2017, 10, 1);
+  public nomeAniversariante = '';
+  public atualMes;
 
-  mes = new Date(2017, 10, 1);
-  nomeAniversariante = '';
-  atualMes;
-
-  mesesDisponiveis = [];
-  diasDisponiveis = [];
+  aniversariantesMes = [];
+  diasComAniversariantes = [];
 
   constructor(private aniversarianteService: AniversariosService) { }
 
   ngOnInit() {
     this.getAniversariantes().then(x => {
-      var j = 0;
-      for (var i = 0; i < this.aniversariantes.length; i++) {
-        // let num = this.aniversariantes[i].dataAniversario.toString().substr(5, 2);
-        var data = new Date(this.aniversariantes[i].dataAniversario);
-        // var atribuir = data.toUTCString().substr(8, 3);
-
-
-        var mes = data.getUTCMonth().toString();
-        var dia = data.getUTCDate();
-        console.log(this.aniversariantes[i].dataAniversario);
-
-        if (i == 0) {
-          this.mesesDisponiveis[j] = mes;
-          this.diasDisponiveis[j] = dia;
-
-          j++;
-        } else {
-          if (mes != this.mesesDisponiveis[j - 1]) {
-            this.mesesDisponiveis[j] = mes;
-            this.diasDisponiveis[j] = dia;
-            j++;
-          } else {
-            if (dia != this.diasDisponiveis[j - 1]) {
-              this.diasDisponiveis[j] = dia;
-              this.mesesDisponiveis[j] = mes;
-              j++;
-            }
-          }
-        }
-
-      }
-      this.preechendorDeAniversariantesData();
-
+      this.fazCopiaDeAniversariantes();
+      //this.preechendorDeAniversariantesData();
     });
     this.atualMes = this.mes.getMonth();
   }
@@ -63,22 +32,62 @@ export class AniversariosPage implements OnInit {
     this.mes = $event.detail.value;
     var data = new Date(this.mes);
     this.atualMes = data.getUTCMonth();
+    this.criarEstruturaDeCards();
   }
+
   async getAniversariantes() {
     this.aniversariantes = await this.aniversarianteService.getAniversariantes().toPromise();
+    this.criarEstruturaDeCards();
+  }
+
+  criarEstruturaDeCards() {
+    this.aniversariantesMes = this.aniversariantes.filter(aniversariante => {
+      let data = new Date(aniversariante.dataAniversario);
+      return data.getUTCMonth() == this.atualMes;
+    });
+
+    this.diasComAniversariantes = this.criaObjetosDia(this.filtraDiasDoMesComAniversariantes(this.aniversariantesMes));
+    console.log(this.diasComAniversariantes);
+  }
+
+  private criaObjetosDia(diasComAniversariantes: any) {
+    return diasComAniversariantes.map(data => {
+      return {
+        numero: data,
+        aniversariantes: this.aniversariantesMes.filter(aniversariante => {
+          let data2 = new Date(aniversariante.dataAniversario).getUTCDate();
+          return data == data2;
+        })
+      };
+    });
+  }
+
+  private filtraDiasDoMesComAniversariantes(aniversariantesMes) {
+    return aniversariantesMes.reduce((array, aniversariante) => {
+      // Retornar um array com dias unicos
+      let data = new Date(aniversariante.dataAniversario).getUTCDate();
+      if (!array.includes(data)) {
+        array.push(data);
+      }
+      return array;
+    }, []);
   }
 
   searchAniversariante(aniversariante: string) {
     return aniversariante.toLowerCase().indexOf(this.nomeAniversariante.toLowerCase()) != -1;
   }
 
-  returnType(n) {
-    console.log(typeof (n));
-  }
-
-  preechendorDeAniversariantesData() {
-    for (var i = 0; i < this.aniversariantes.length; i++) {
-      this.aniversariantesData[i] = new Date(this.aniversariantes[i].dataAniversario).getUTCMonth();
+  buscaAniversariante($event) {
+    console.log($event.toLowerCase());
+    let ani = this.copiaAniversariantes.filter(x => x.nome.toLowerCase().indexOf($event.toLowerCase()) != -1);
+    if (this.copiaAniversariantes.filter(x => x.nome.toLowerCase().indexOf($event.toLowerCase()) != -1)) {
+      this.aniversariantes = ani;
+      this.criarEstruturaDeCards();
     }
+
+  }
+  fazCopiaDeAniversariantes() {
+    this.copiaAniversariantes = this.aniversariantes.map(aniversariante => aniversariante)
+    console.log(this.copiaAniversariantes);
   }
 }
