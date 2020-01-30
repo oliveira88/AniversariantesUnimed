@@ -78,9 +78,9 @@ export class AniversariosPage implements OnInit {
   }
 
   buscaAniversariante($event) {
-    console.log($event.toLowerCase());
-    let ani = this.copiaAniversariantes.filter(x => x.nome.toLowerCase().indexOf($event.toLowerCase()) != -1);
-    if (this.copiaAniversariantes.filter(x => x.nome.toLowerCase().indexOf($event.toLowerCase()) != -1)) {
+    console.log($event.toLowerCase().trim());
+    let ani = this.copiaAniversariantes.filter(x => x.nome.toLowerCase().indexOf($event.toLowerCase().trim()) != -1);
+    if (this.copiaAniversariantes.filter(x => x.nome.toLowerCase().indexOf($event.toLowerCase().trim()) != -1)) {
       this.aniversariantes = ani;
       this.criarEstruturaDeCards();
     }
