@@ -2,8 +2,7 @@
   <ion-toolbar class="navbar">
     <ion-title class="titulo">Aniversariantes</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button icon="../assets/images/angle-left.svg" defaultHref="/aniversariantes" ionClick="sair()"
-        class="icone-voltar">
+      <ion-back-button icon="../assets/images/angle-left.svg" defaultHref="/aniversariantes" class="icone-voltar">
       </ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
@@ -29,6 +28,7 @@
 
 <ion-content id="contentx" class="content">
   <ion-text>
+
     <h1 class="text">Veja os cooperados que comemoram aniversário. Selecione uma data ou pesquise pelo nome.</h1>
   </ion-text>
 
@@ -36,9 +36,10 @@
     <ion-card-content class="card-content">
       <div class="div-content">
         <i slot="end" class="fas fa-calendar-alt fa-2x img-calendar"></i>
-        <ion-datetime class="text-data" displayFormat="MMMM - YYYY" value="October - 2017"></ion-datetime>
+        <ion-datetime class="text-data" displayFormat="MMMM - YYYY" value="November - 2017" (ngModel)="mes"
+          (ionChange)="dataChanged($event)">
+        </ion-datetime>
         <i slot="end" class="fas fa-caret-right fa-2x img-right-caret"></i>
-
       </div>
     </ion-card-content>
   </ion-card>
@@ -46,31 +47,104 @@
   <ion-card class="card-input">
     <div class="div-nome-aniversariante">
 
+      <ion-input placeholder="Nome do aniversariante" [ngModel]="nomeAniversariante"
+        (ngModelChange)="buscaAniversariante($event)" class="input-aniversariante">
+      </ion-input>
 
-      <ion-input placeholder="Nome do aniversariante" autocomplete="true" class="input-aniversariante"></ion-input>
     </div>
+
   </ion-card>
 
-  <ion-card class="card-aniversariantes">
-    <ion-item>
 
-      <ion-card-title class="card-title">Aniversariantes do dia</ion-card-title>
-      <div slot="end" class="div-title-date">
-        <div class="card-title-date-text">
-          30
+  <!-- <ng-container *ngFor="let i of aniversariantes; let n = index; ">
+
+    <ng-container *ngIf="searchAniversariante(i.nome)">
+      <ion-card *ngIf="(mes | date: 'MMM') == (i.dataAniversario | date: 'MMM') " class="card-aniversariantes">
+
+        <ng-container *ngIf="n > 0">
+          <ng-container *ngIf="(i.dataAniversario ) != (aniversariantes[n-1].dataAniversario );">
+            <ion-item>
+              <ion-card-title class="card-title">Aniversariantes do dia</ion-card-title>
+              <div slot="end" class="div-title-date">
+                <div class="card-title-date-text">
+                  {{i.dataAniversario | date: "dd" }}
+                </div>
+                <div class="card-input-date-data">
+                  {{i.dataAniversario | date: "MMM"}}
+                </div>
+              </div>
+            </ion-item>
+          </ng-container>
+
+          <ion-card-content class="card-content-aniversariantes">
+            <ion-list>
+              {{i.nome }}
+            </ion-list>
+
+          </ion-card-content>
+
+        </ng-container>
+
+      </ion-card>
+    </ng-container>
+  </ng-container> -->
+
+  <!-- FUNFANDO
+  <ng-container *ngFor="let i of aniversariantes| slice:1; let n = index; ">
+    <ion-card
+      *ngIf=" (mes | date: 'MMM') == (i.dataAniversario | date: 'MMM') && i.dataAniversario.toString() != aniversariantes[n].dataAniversario.toString() "
+      class="card-aniversariantes">
+      <ion-item>
+        <ion-card-title class=" card-title">Aniversariantes do dia</ion-card-title>
+        <div slot="end" class="div-title-date">
+          <div class="card-title-date-text">
+            {{i.dataAniversario | date: "dd" }}
+          </div>
+          <div class="card-input-date-data">
+            {{i.dataAniversario | date: "MMM"}}
+          </div>
         </div>
-        <div class="card-input-date-data">
-          out
+      </ion-item>
+      <ng-container *ngFor="let j of aniversariantes">
+        <ion-card-content *ngIf="j.dataAniversario == i.dataAniversario" class="card-content-aniversariantes">
+          <ion-list>
+            {{j.nome}}
+          </ion-list>
+        </ion-card-content>
+      </ng-container>
+    </ion-card>
+  </ng-container> -->
+
+  <ng-container *ngFor="let dia of diasComAniversariantes; let n = index; ">
+    <ion-card class="card-aniversariantes">
+      <ion-item>
+        <ion-card-title class="card-title">Aniversariantes do dia</ion-card-title>
+        <div slot="end" class="div-title-date">
+          <div class="card-title-date-text">
+            {{dia.numero}}
+          </div>
+          <div class="card-input-date-data">
+            {{mes | date: "MMM"}}
+          </div>
         </div>
-      </div>
+      </ion-item>
+      <ion-card-content class="card-content-aniversariantes">
+        <ion-list>
 
-    </ion-item>
-    <ion-card-content class="card-content-aniversariantes">
+          <ng-container *ngFor="let j of dia.aniversariantes; let m = index;">
+            <p>
+              {{j.nome}}
+            </p>
+          </ng-container>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 
-      <ion-list *ngFor="let i of aniversariantes">
-        {{i}}
 
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+
+
+
+
+
 </ion-content>

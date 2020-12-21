@@ -1,54 +1,67 @@
 [
     {
         "nome": "José da Silva Teixeira",
-        "dataAniversario": "2000-01-01"
+        "diaAniversario": 1,
+        "mesAniversario": 1
     },
     {
         "nome": "Luiz Carlos Garcia",
-        "dataAniversario": "2000-01-02"
+        "diaAniversario": 2,
+        "mesAniversario": 2
     },
     {
         "nome": "Marina Severó",
-        "dataAniversario": "2000-02-01"
+        "diaAniversario": 1,
+        "mesAniversario": 3
     },
     {
         "nome": "Joao Victor Martins",
-        "dataAniversario": "2000-02-02"
+        "diaAniversario": 2,
+        "mesAniversario": 4
     },
     {
         "nome": "Luiz Carlos Garcia",
-        "dataAniversario": "2000-03-02"
+        "diaAniversario": 2,
+        "mesAniversario": 5
     },
     {
         "nome": "Felipe Barbosa Guerra",
-        "dataAniversario": "2000-10-06"
+        "diaAniversario": 6,
+        "mesAniversario": 6
     },
     {
         "nome": "Savio Vasconcelos Ferraz",
-        "dataAniversario": "2000-10-07"
+        "diaAniversario": 7,
+        "mesAniversario": 7
     },
     {
         "nome": "João da Silva Silvoso",
-        "dataAniversario": "2000-10-25"
+        "diaAniversario": 25,
+        "mesAniversario": 8
     },
     {
         "nome": "Maria Aparecida Vieira Couto",
-        "dataAniversario": "2000-11-03"
+        "diaAniversario": 3,
+        "mesAniversario": 9
     },
     {
         "nome": "Roberto Almeida Spoletti",
-        "dataAniversario": "2000-11-04"
+        "diaAniversario": 4,
+        "mesAniversario": 10
     },
     {
         "nome": "Ana Maria Cerqueira",
-        "dataAniversario": "2000-11-25"
+        "diaAniversario": 25,
+        "mesAniversario": 11
     },
     {
         "nome": "Pedro Arthur Nogueira Rispinni",
-        "dataAniversario": "2000-11-25"
+        "diaAniversario": 25,
+        "mesAniversario": 11
     },
     {
         "nome": "Francine Fonseca Pedrini",
-        "dataAniversario": "2000-11-25"
+        "diaAniversario": 25,
+        "mesAniversario": 11
     }
 ]
